@@ -9,7 +9,7 @@ from langchain.agents import AgentType
 def load_file(uploaded_file):
     if uploaded_file is not None:
         file_type = uploaded_file.name.split('.')[-1].lower()
-        if file_type in ['csv', 'txt']:
+        if file_type in ['csv']:
             return pd.read_csv(uploaded_file)
         else:
             st.error("Unsupported file type.")
@@ -45,7 +45,7 @@ def create_agent(data):
 st.title("AI Agent for Data Analysis")
 
 st.sidebar.header("Upload Your Data")
-uploaded_file = st.sidebar.file_uploader("Choose a file", type=["csv", "xlsx", "json", "txt"])
+uploaded_file = st.sidebar.file_uploader("Choose a file", type=["csv", "xlsx", "json", "txt",".db"])
 
 data = load_file(uploaded_file)
 if data is not None:
